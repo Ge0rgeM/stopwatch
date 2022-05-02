@@ -20,8 +20,13 @@
         background-color: var(--background-color);
     }
     .all{
-        text-align: center;
-        margin: 70px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1vw auto;
+    }
+    .buttons{
+        display: flex;
     }
     button{
         text-decoration: none;
@@ -53,6 +58,21 @@
             color: var(--background-color);
         }
     }
+    @media (max-width: 600px) {
+        body{
+            transform: scale(0.8);
+        }
+    }
+    @media (max-width: 500px) {
+        body{
+            transform: scale(0.7);
+        }
+    }
+    @media (max-width: 350px) {
+        body{
+            transform: scale(0.6);
+        }
+    }
 </style>
 <body>
     <div class="all">
@@ -60,8 +80,10 @@
         <p>
             <span id="hours" class="hours">00</span>:<span id="minutes" class="minutes">00</span>:<span id="seconds" class="seconds">00</span>:<span id="mlseconds" class="mlseconds">00</span>
         </p>
-        <button id="start" class="start" onclick="start()">Start</button>
-        <button id="reset" class="reset" onclick="reset()">Reset</button>
+        <div class="buttons">
+            <button id="start" class="start" onclick="start()">Start</button>
+            <button id="reset" class="reset" onclick="reset()">Reset</button>
+        </div>
     </div>
 </body>
 </html>
