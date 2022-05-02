@@ -52,6 +52,9 @@
         animation-name: animation;
         animation-fill-mode: both;
     }
+    img{
+        cursor: pointer;
+    }
     @keyframes animation{
         100%{            
             background-color: white;
@@ -59,6 +62,9 @@
         }
     }
     @media (max-width: 600px) {
+        .all{
+            position: fixed;
+        }
         body{
             transform: scale(0.8);
         }
@@ -84,16 +90,21 @@
             <button id="start" class="start" onclick="start()">Start</button>
             <button id="reset" class="reset" onclick="reset()">Reset</button>
         </div>
+        <div id="flag" class="flag">
+            <img onclick="flag()" src="images/stickmanFlag.png" alt="flag" width="200px">
+        </div>
+        <p id="flagTimes" class="flagTimes"></p>
     </div>
 </body>
 </html>
 <script>
-    const COLOR_CHANGE_INTERVAL = 0.15;
+    const COLOR_CHANGE_INTERVAL = 0.1;
     let startButton = document.getElementById("start");
     let htmlMlseconds = document.getElementById("mlseconds");
     let htmlSeconds = document.getElementById("seconds");
     let htmlMinutes = document.getElementById("minutes");
     let htmlHours = document.getElementById("hours");
+    let flagTimes = document.getElementById("flagTimes");
     let hours = 00;
     let mlseconds = 00;
     let seconds = 00;
@@ -136,6 +147,7 @@
         htmlMinutes.innerHTML = "00";
         htmlHours.innerHTML = "00";
         startButton.textContent = "Start";
+        flagTimes.innerHTML="";
     }
     function timer() {
         mlseconds++;
@@ -177,5 +189,10 @@
         }
         const hue = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hue"));
         document.documentElement.style.setProperty("--hue",hue+COLOR_CHANGE_INTERVAL);
+    }
+    function flag() {
+        let temp = flagTimes.innerHTML;
+        flagTimes.innerHTML =htmlHours.innerText + ":" + htmlMinutes.innerText + ":" + htmlSeconds.innerText + ":" + htmlMlseconds.innerText + "<br>";
+        flagTimes.innerHTML+=temp;        
     }
 </script>
